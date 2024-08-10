@@ -8,6 +8,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
+import { Link } from "react-router-dom";
 import MovieReviews from "../movieReviews"
 
 
@@ -22,7 +23,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -95,6 +96,13 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
 
       </Paper>
+      <Link to={`/movies/${movie.id}/similar`}>
+        <button variant="contained"
+          color="primary"
+          style={{ marginTop: '10px' }}>
+          View Similar Movies
+        </button>
+      </Link>
 
 
 
