@@ -3,6 +3,7 @@ import PageTemplate from '../components/templateMovieListPage';
 import { getUpcomingMovies } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import { useQuery } from 'react-query';
+import { Pagination } from "@mui/material";
 import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
 
 
@@ -11,7 +12,9 @@ import PlaylistAddIcon from "../components/cardIcons/addToPlaylist";
 const UpcomingMoviesPage = () => {
 
 
-  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const {  data, error, isLoading, isError }  = useQuery(['upcoming',currentPage], () => getUpcomingMovies(currentPage));
 
   if (isLoading) {
     return <Spinner />
@@ -24,16 +27,29 @@ const UpcomingMoviesPage = () => {
   const mustWatch = movies.filter(m => m.mustWatch)
   localStorage.setItem('mustWatch', JSON.stringify(mustWatch))
 
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+  };
+  const totalPages = data.total_pages;
+
 
 
   return (
+    <>
     <PageTemplate
-      title='Upcoming Movies'
+      title="Latest Movies"
       movies={movies}
-      action={(movie) => {
-        return <PlaylistAddIcon movie={movie} />
-      }}
+      action={(movie) => <PlaylistAddIcon movie={movie} />}
     />
+    <Pagination
+      style={{ marginTop: '25px', display: 'flex', justifyContent: 'center' }}
+      count={totalPages}
+      color="secondary"
+      onChange={handlePageChange}
+      page={currentPage}
+      size="large"
+    />
+  </>
   );
 };
 
