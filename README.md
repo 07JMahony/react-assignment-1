@@ -21,21 +21,19 @@ Run npm install
 
 
 + Latest movies - https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&region=GB&page=${page}
-+ Trending movies - movies/trending
-+ Top rated movies = movies/topRated
++ Trending movies - https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}
++ Top rated movies - https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}
 
 ## Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
++ /movies/topRated - displays the highest rated movies of all time.
++ /movies/trending - displays currently popular movies.
++ /movies/latest - displays the newest movies available.
 
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
-## Independent learning (If relevant).
+## Independent learning
 
 Itemize the technologies/techniques you researched independently and adopted in your project, 
 i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these 
