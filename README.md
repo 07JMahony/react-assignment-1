@@ -20,7 +20,7 @@ Run npm install
 ## API endpoints. 
 
 
-+ Latest movies - movies/latest
++ Latest movies - https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&region=GB&page=${page}
 + Trending movies - movies/trending
 + Top rated movies = movies/topRated
 
